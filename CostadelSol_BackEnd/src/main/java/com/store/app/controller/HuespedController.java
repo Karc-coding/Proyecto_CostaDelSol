@@ -3,8 +3,10 @@ package com.store.app.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.store.app.entity.Huesped;
@@ -12,16 +14,19 @@ import com.store.app.service.HuespedService;
 import com.store.app.util.Constantes;
 
 public class HuespedController {
-	
-/*	@PostMapping
+	@Autowired
+	private HuespedService huespedService;
+
+	@PostMapping
 	@ResponseBody
 	public ResponseEntity<Map<String, Object>> RegistrarHuesped(@RequestBody Huesped obj){
 		
 		Map<String, Object> salida = new HashMap<String, Object>();
+	
 		
 		try {
 									
-			Huesped objHuesped = HuespedService.RegistrarHuesped(obj);
+			Huesped objHuesped = huespedService.RegistrarHuesped(obj);
 			if(objHuesped == null){
 				salida.put("mensaje", Constantes.MENSAJE_REG_ERROR);
 			}else {
@@ -34,6 +39,6 @@ public class HuespedController {
 		}
 		return ResponseEntity.ok(salida);
 	}
-*/
+
 
 }
