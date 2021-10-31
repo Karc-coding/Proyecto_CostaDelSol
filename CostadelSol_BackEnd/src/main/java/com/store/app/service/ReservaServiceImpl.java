@@ -1,5 +1,7 @@
 package com.store.app.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,15 +15,19 @@ public class ReservaServiceImpl implements ReservaService {
 	private ReservaRepository repository;
 	
 	@Override
-	public Reserva insertaSalida(Reserva obj) {
-		// TODO Auto-generated method stub
-		return null;
+	public Reserva insertaSalida(Reserva obj) {		
+		return repository.save(obj);
 	}
 
 	@Override
 	public void eliminarSalida(String id) {
-		// TODO Auto-generated method stub
+		repository.deleteById(id);
 		
+	}
+
+	@Override
+	public List<Reserva> listaReserva() {		
+		return repository.findAll();
 	}
 
 }
