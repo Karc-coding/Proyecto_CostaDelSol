@@ -1,5 +1,6 @@
 package com.store.app.controller;
 
+import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.gson.Gson;
 import com.store.app.entity.Factura;
 import com.store.app.service.FacturaService;
 import com.store.app.util.Constantes;
@@ -30,7 +32,16 @@ public class FacturaController {
 		
 		try {
 			
+			//INSERTA FACTURA
 			Factura objFac = facturaService.insertaFactura(factura);
+			
+			//CREACION DE ARCHIVO JSON
+			Gson gson = new Gson();
+			String jsonString = gson.toJson(factura);
+			FileWriter fileWrite = new FileWriter("D:\\Cibertec\\Ciclo VI\\Desarrollo_Servicios_Web_II\\Proyecto\\Factura.json");
+			fileWrite.write(jsonString);
+			fileWrite.close();
+			
 			
 			if(objFac == null) {
 				salida.put("mensaje", Constantes.MENSAJE_REG_ERROR);
