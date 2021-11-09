@@ -8,3 +8,4 @@ public interface HuespedService {
 	public abstract void EliminarHuesped(String id);
 
 }
+
