@@ -1,5 +1,7 @@
 package com.store.app.service;
 
-public interface ProductoService {
+import com.store.app.entity.Producto;
 
+public interface ProductoService {
+	public abstract Producto insertaProducto(Producto producto);
 }
