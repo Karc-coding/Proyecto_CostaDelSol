@@ -1,5 +1,5 @@
-drop database DB_CostadelSol;
-create database DB_CostadelSol;
+drop database if exists DB_CostadelSol;
+create database if not exists DB_CostadelSol;
 use  DB_CostadelSol;
 
 create table Habitacion(
