@@ -15,6 +15,8 @@ import { ListReservaComponent } from './components/list-reserva/list-reserva.com
 import { ListHuespedComponent } from './components/list-huesped/list-huesped.component';
 import { ListFacturaComponent } from './components/list-factura/list-factura.component';
 import { ListProductoComponent } from './components/list-producto/list-producto.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { ListProductoComponent } from './components/list-producto/list-producto.
     ListReservaComponent,
     ListHuespedComponent,
     ListFacturaComponent,
-    ListProductoComponent
+    ListProductoComponent,
+    FooterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

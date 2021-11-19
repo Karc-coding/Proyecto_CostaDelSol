@@ -2,12 +2,15 @@ th {
     text-align: center;
 }
 
+.contenido {
+    display: flex;
+    flex-direction: column;
+}
+
 .divRigth {
-    width: 50%;
     float: right;
 }
 
 .divLeft {
-    width: 50%;
     float: left;
 }
