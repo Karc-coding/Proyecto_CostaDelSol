@@ -1,0 +1,72 @@
+<div>
+    <form class="content contenido" (submit)="register()">
+        <div class="submit-form">
+            <div class="row">
+                <div class="col-lg-12" style="margin-top: 1.5%">
+                    <h3>Registro de Habitaciones</h3>
+                </div>
+            </div>
+
+            <div class="divLeft w-50 p-3">
+                <div class="row" style="margin-top: 3%">
+                    <div class="col-lg-5">
+                        <label for="id">ID</label>
+                        <input type="text" maxlength="5" class="form-control" name="id" id="id"
+                            [(ngModel)]="habitacion.id" />
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="descripcion">Descripcion</label>
+                        <input type="text" class="form-control" name="descripcion" id="descripcion"
+                            [(ngModel)]="habitacion.description" />
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 3%">
+                    <div class="col-lg-5">
+                        <label for="price">Precio</label>
+                        <input type="number" class="form-control" name="price" id="price" placeholder="0.00"
+                            [(ngModel)]="habitacion.price" />
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="state">Estado</label>
+                        <select id="state" name="state" class="form-control" [(ngModel)]="habitacion.state">
+                            <option value="-1"> [Seleccione] </option>
+                            <option value="Disponible"> Disponible </option>
+                            <option value="Ocupado"> Ocupado </option>
+                            <option value="Reservado"> Reservado </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 3%">
+                    <div class="col-lg-12">
+                        <button class="btn btn-success">Enviar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divRigth w-50 p-3">
+                <div class="row" style="margin-top: 3%">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Descripcion</th>
+                                <th>Precio</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let aux of habitaciones">
+                                <td style="font-weight: 600; text-align: center;">{{aux.id}}</td>
+                                <td >{{aux.description}}</td>
+                                <td style="text-align: center;">{{aux.price}}</td>
+                                <td style="text-align: center;">{{aux.state}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
