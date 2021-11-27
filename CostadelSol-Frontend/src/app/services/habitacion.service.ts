@@ -13,16 +13,10 @@ export class HabitacionService {
   constructor(private http: HttpClient) { }
 
   register(data: Habitacion): Observable<any> {
-    let username = "karc";
-    let password = "admin123";
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ":" + password) })
-    return this.http.post(baseUrl + "/create", data, { headers })
+    return this.http.post(baseUrl + "/create", data)
   }
 
   listAll(): Observable<any> {
-    let username = "karc";
-    let password = "admin123";
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ":" + password) })
-    return this.http.get<Habitacion[]>(baseUrl + "/listAll", { headers })
+    return this.http.get<Habitacion[]>(baseUrl + "/listAll")
   }
 }

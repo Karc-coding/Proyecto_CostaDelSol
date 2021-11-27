@@ -136,7 +136,7 @@ constraint FK_DT_Ped_Nro_Ped foreign key (Nro_Ped) references Orden_Pedido(Nro_P
 constraint FK_DT_Ped__Pro_ID foreign key (Producto_ID) references Producto(Producto_ID)
 );
 
-
+/*
 create table usuario(
 user_id INT UNSIGNED AUTO_INCREMENT,
 username VARCHAR(75) NOT NULL,
@@ -173,6 +173,7 @@ CONSTRAINT user_role_role_id_uk
 select * from usuario;
 select * from role;
 select * from user_role;
+*/
 
 /*
 

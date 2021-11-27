@@ -15,10 +15,4 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getUsers(){
-    this.loginService.getUsers().subscribe(
-      response => this.users = response
-    );
-  }
-
 }

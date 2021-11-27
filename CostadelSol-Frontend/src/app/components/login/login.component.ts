@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -11,20 +12,17 @@ export class LoginComponent implements OnInit {
 
   username: string = "";
   password: string = "";
-  message: any;
 
-  constructor(private loginService: LoginService, private router: Router) { }
+  constructor(private loginService: LoginService) {
+  }
 
   ngOnInit(): void {
   }
 
-  doLogin() {
-    this.loginService.login(this.username, this.password).subscribe(
-      response => {
-        this.message = response;
-        this.router.navigate(["/home"])
-      }
-    );
+  login() {
+    console.log(this.username);
+    console.log(this.password);
+    this.loginService.login(this.username, this.password);
   }
 
 }

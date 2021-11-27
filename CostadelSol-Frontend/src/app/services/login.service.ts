@@ -1,26 +1,31 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Usuario } from '../models/usuario.model';
 
-const baseUrl = "http://localhost:8090/"
+const baseUrl = "http://localhost:8090"
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  constructor(private http: HttpClient) { }
+  token: any;
 
+  constructor(private http: HttpClient, private router: Router) { }
 
   public login(username: string, password: string) {
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ":" + password) })
-    return this.http.get(baseUrl, { headers, responseType: 'text' as 'json' })
+    return this.http.post<Usuario>(baseUrl + "/login", { username, password }).subscribe(
+      (resp: any) => {
+        this.router.navigateByUrl("/home");
+        localStorage.setItem('auth_token', resp.token);
+        console.log(resp);
+      }
+    );
   }
 
-  public getUsers() {
-    let username = "karc";
-    let password = "admin123";
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ":" + password) })
-    return this.http.get(baseUrl + "getUsers", { headers })
+  public logout() {
+    localStorage.removeItem('auth_token')
+    this.router.navigateByUrl("/");
   }
-
 }
