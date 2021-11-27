@@ -1,0 +1,14 @@
+html {
+    background-color: rgba(242, 242, 242, 100%);
+    position: inherit;
+    min-height: 100%;
+}
+
+body {
+    padding-bottom: 60px;
+}
+
+.marginContent {
+    margin-left: 90px;
+    margin-right: 90px;
+}

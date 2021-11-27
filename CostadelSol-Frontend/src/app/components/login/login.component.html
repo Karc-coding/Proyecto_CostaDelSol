@@ -1,0 +1,49 @@
+<img src="../assets/Logo White.svg" class="logo">
+
+<div class="box-login">
+    <h1 class="title-color">Inicio de Sesion</h1>
+    <form class="form-login">
+        <div class="box-input">
+            <input type="text" class="form-label" name="username" id="username" [(ngModel)]="username" />
+            <span class="line"></span>
+            <label class="namebox">Usuario</label>
+        </div>
+        <div class="box-input-rch">
+            <input type="password" class="form-label" name="password" id="password" [(ngModel)]="password" />
+            <span class="line"></span>
+            <label class="namebox">Contraseña</label>
+        </div>
+        <div class="box-input-checkbox">
+            <input type="checkbox" class="form-checkbox" name="rememberMe" id="rememberMe" />
+            <label class="namecheckbox">Recuerdame</label>
+        </div>
+        <input type="submit" value="Iniciar Sesion" class="btn btn-form" (click)="login()">
+    </form>
+    <div class="consulta">
+        <a href="#">¿Necesita ayuda?</a>
+    </div>
+</div>
+
+<div class="consulta">
+    <!-- @ViewBag.message -->
+</div>
+
+
+<!-- <div class="background-wrap">
+    <div class="background"></div>
+</div>
+
+<form id="accesspanel" action="">
+    <h1 id="litheader">Java Techie</h1>
+    <div class="inset">
+        <p>
+            <input type="text" name="username" [(ngModel)]="username" id="email" placeholder="username">
+        </p>
+        <p>
+            <input type="password" name="password" [(ngModel)]="password" id="password" placeholder="password">
+        </p>
+    </div>
+    <p class="p-container">
+        <input type="submit" name="Login" id="go" value="Login" (click)="doLogin()">
+    </p>
+</form> -->

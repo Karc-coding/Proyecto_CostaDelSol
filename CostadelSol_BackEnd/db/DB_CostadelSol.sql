@@ -137,6 +137,70 @@ constraint FK_DT_Ped__Pro_ID foreign key (Producto_ID) references Producto(Produ
 );
 
 /*
+create table usuario(
+user_id INT UNSIGNED AUTO_INCREMENT,
+username VARCHAR(75) NOT NULL,
+password VARCHAR(75) NOT NULL,
+email VARCHAR(125) NOT NULL,
+CONSTRAINT usuario_user_id_pk
+	PRIMARY KEY(user_id),
+CONSTRAINT usuario_username_uk
+	UNIQUE(username)
+);
+
+create table role(
+role_id INT UNSIGNED AUTO_INCREMENT,
+role VARCHAR(75) NOT NULL,
+CONSTRAINT role_role_id_pk
+	PRIMARY KEY(role_id)
+);
+
+create table user_role(
+user_id INT UNSIGNED,
+role_id INT UNSIGNED,
+CONSTRAINT user_role_user_id_role_id_pk
+	PRIMARY KEY(user_id,role_id),
+CONSTRAINT user_role_user_id_fk
+	FOREIGN KEY(user_id)
+		REFERENCES usuario(user_id),
+CONSTRAINT user_role_role_id_fk
+	FOREIGN KEY(role_id)
+		REFERENCES role(role_id),
+CONSTRAINT user_role_role_id_uk
+	UNIQUE(role_id)
+);
+
+select * from usuario;
+select * from role;
+select * from user_role;
+*/
+
+/*
+
+INSERT INTO usuario
+	VALUES	(DEFAULT, 'karc@gmail.com', '1973546'),
+			(DEFAULT, 'marcos123@yahoo.com', 'password'),
+            (DEFAULT, 'jugo@outlook.com', 'admin123'),
+            (DEFAULT, 'luciaperez@hotmail.com', 'lucia123');
+*/
+
+create table usuario(
+user_id INT UNSIGNED AUTO_INCREMENT,
+username VARCHAR(75) NOT NULL,
+password VARCHAR(75) NOT NULL,
+CONSTRAINT usuario_user_id_pk
+	PRIMARY KEY(user_id),
+CONSTRAINT usuario_username_uk
+	UNIQUE(username)
+);
+
+INSERT INTO usuario
+	VALUES	(DEFAULT, 'karc', '1973546'),
+			(DEFAULT, 'marcos123', 'password'),
+            (DEFAULT, 'jugo', 'admin123'),
+            (DEFAULT, 'luciaperez', 'lucia123');
+
+/*
 
 
 ======================PROCEDURE===============================*/

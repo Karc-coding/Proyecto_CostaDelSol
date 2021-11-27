@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Habitacion } from '../models/habitacion.model';
@@ -12,7 +12,7 @@ export class HabitacionService {
 
   constructor(private http: HttpClient) { }
 
-  register(data:Habitacion): Observable<any>{
+  register(data: Habitacion): Observable<any> {
     return this.http.post(baseUrl + "/create", data)
   }
 

@@ -11,18 +11,27 @@ import { AddHuespedComponent } from './components/add-huesped/add-huesped.compon
 import { ListHuespedComponent } from './components/list-huesped/list-huesped.component';
 import { AddFacturaComponent } from './components/add-factura/add-factura.component';
 import { ListFacturaComponent } from './components/list-factura/list-factura.component';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  { path:"addHabitacion", component:AddHabitacionComponent },
-  { path:"listHabitacion", component:ListHabitacionComponent },
-  { path:"addProducto", component:AddProductoComponent },
-  { path:"listProducto", component:ListProductoComponent },
-  { path:"addReserva", component:AddReservaComponent },
-  { path:"listReserva", component:ListReservaComponent },
-  { path:"addHuesped", component:AddHuespedComponent },
-  { path:"listHuesped", component:ListHuespedComponent },
-  { path:"addFactura", component:AddFacturaComponent },
-  { path:"listFactura", component:ListFacturaComponent },
+  { path: "login", component: LoginComponent },
+  { path: "", redirectTo: "login", pathMatch: "full" },
+  {
+    path: "home", component: HomeComponent,
+    children: [
+      { path: "addHabitacion", component: AddHabitacionComponent },
+      { path: "listHabitacion", component: ListHabitacionComponent },
+      { path: "addProducto", component: AddProductoComponent },
+      { path: "listProducto", component: ListProductoComponent },
+      { path: "addReserva", component: AddReservaComponent },
+      { path: "listReserva", component: ListReservaComponent },
+      { path: "addHuesped", component: AddHuespedComponent },
+      { path: "listHuesped", component: ListHuespedComponent },
+      { path: "addFactura", component: AddFacturaComponent },
+      { path: "listFactura", component: ListFacturaComponent }
+    ]
+  }
 ];
 
 @NgModule({

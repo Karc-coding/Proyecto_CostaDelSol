@@ -12,6 +12,11 @@
     color: #F2F5FF;
 }
 
+.textUser:hover {
+    color: #C9CBE3;
+    text-decoration: none;
+}
+
 .nav-colorfond {
     background-color: rgba(3, 120, 166, 95%);
 }
