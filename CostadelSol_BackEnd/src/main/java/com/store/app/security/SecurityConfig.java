@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -15,7 +16,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.store.app.service.JwtAuthorizationFilter;
 import com.store.app.service.MyUserDetailsService;
 
-//@Configuration
+
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -26,20 +27,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private JwtAuthorizationFilter jwtAuthorizationFilter;
 
 	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources", "/configuration/security",
+				"/swagger-ui.html", "/webjars/**", "/swagger-resources/configuration/ui", "/swagger-ui.html");
+	}
+
+	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.inMemoryAuthentication().withUser("karc").password("{noop}admin123").roles("USER");
 		auth.userDetailsService(myUserDetailsService);
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.cors();
-//		http.csrf().disable();
-//		http.authorizeRequests().antMatchers("/**").fullyAuthenticated().and().httpBasic();
-
-//		http.authorizeRequests().antMatchers("/**").hasRole("USER").and().httpBasic();
-//		http.csrf().disable().authorizeRequests().antMatchers("/login").permitAll().anyRequest().authenticated();
-
 		http.csrf().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 				.authorizeRequests().antMatchers("/login").permitAll().anyRequest().authenticated().and()
 				.addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
