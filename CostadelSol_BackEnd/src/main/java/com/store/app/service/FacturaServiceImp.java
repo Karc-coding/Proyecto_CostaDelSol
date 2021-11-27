@@ -17,4 +17,9 @@ public class FacturaServiceImp implements FacturaService {
 		return repository.save(factura);
 	}
 
+	/*@Override
+	public List<String> listaIdFactura() {		
+		return repository.listaIdFactura();
+	}*/
+
 }
