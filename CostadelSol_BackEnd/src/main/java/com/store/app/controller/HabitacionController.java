@@ -24,7 +24,7 @@ import com.store.app.util.Constantes;
 
 @RestController
 @RequestMapping("/habitacion")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class HabitacionController {
 
 	@Autowired

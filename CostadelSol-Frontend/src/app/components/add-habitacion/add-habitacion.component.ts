@@ -8,14 +8,14 @@ import { HabitacionService } from 'src/app/services/habitacion.service';
   styleUrls: ['./add-habitacion.component.css']
 })
 export class AddHabitacionComponent implements OnInit {
-  
+
   habitacion: Habitacion = {
     id: '',
     description: '',
     state: '',
     price: 0
   }
-  
+
   habitaciones: Habitacion[] = [];
 
   constructor(private habitacionService: HabitacionService) {
@@ -29,24 +29,32 @@ export class AddHabitacionComponent implements OnInit {
     );
   }
 
-  
+
 
   ngOnInit(): void {
   }
-  
-  register(){
+
+  register() {
     this.habitacionService.register(this.habitacion).subscribe(
       response => {
         alert(response.message);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-    //---
-    this.habitacionService.listAll().subscribe(
-      response => {
-        this.habitaciones = response.list
+
+        this.habitacionService.listAll().subscribe(
+          response => {
+            this.habitaciones = response.list
+          },
+          error => {
+            console.log(error);
+          }
+        );
+
+        this.habitacion = {
+          id: '',
+          description: '',
+          state: '',
+          price: 0
+        }
+
       },
       error => {
         console.log(error);
