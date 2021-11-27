@@ -19,4 +19,7 @@ export class HabitacionService {
   listAll(): Observable<any> {
     return this.http.get<Habitacion[]>(baseUrl + "/listAll")
   }
+  listDescripHabitacion(): Observable<string[]>{
+    return this.http.get<string[]>(baseUrl+ "/listaDescripcionHabitacion");
+  }
 }
