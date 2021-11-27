@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.store.app.entity.AuthenticationRequest;
-import com.store.app.entity.AuthenticationResponse;
-import com.store.app.service.JwtService;
+import com.store.app.security.AuthenticationRequest;
+import com.store.app.security.AuthenticationResponse;
+import com.store.app.security.JwtService;
 import com.store.app.service.MyUserDetailsService;
 
 import lombok.RequiredArgsConstructor;

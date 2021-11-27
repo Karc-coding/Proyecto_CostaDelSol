@@ -1,4 +1,4 @@
-package com.store.app.service;
+package com.store.app.security;
 
 import java.util.Base64;
 import java.util.Collection;

@@ -184,6 +184,22 @@ INSERT INTO usuario
             (DEFAULT, 'luciaperez@hotmail.com', 'lucia123');
 */
 
+create table usuario(
+user_id INT UNSIGNED AUTO_INCREMENT,
+username VARCHAR(75) NOT NULL,
+password VARCHAR(75) NOT NULL,
+CONSTRAINT usuario_user_id_pk
+	PRIMARY KEY(user_id),
+CONSTRAINT usuario_username_uk
+	UNIQUE(username)
+);
+
+INSERT INTO usuario
+	VALUES	(DEFAULT, 'karc', '1973546'),
+			(DEFAULT, 'marcos123', 'password'),
+            (DEFAULT, 'jugo', 'admin123'),
+            (DEFAULT, 'luciaperez', 'lucia123');
+
 /*
 
 
