@@ -17,6 +17,9 @@ import { ListFacturaComponent } from './components/list-factura/list-factura.com
 import { ListProductoComponent } from './components/list-producto/list-producto.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginService } from './services/login.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     ListFacturaComponent,
     ListProductoComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.logo {
+  margin-top: 50px;
+  margin-bottom: 25px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.box-login {
+  background-color: rgba(250, 250, 250, 0.90);
+  position: block;
+  width: 431px;
+  height: 496px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+}
+.box-login > h1 {
+  font-family: var(--font);
+  font-size: 23px;
+  text-align: center;
+  padding-top: 45px;
+}
+.title-color {
+  color: var(--colorC);
+}
+.form-login {
+  width: 100%;
+  margin: auto;
+}
+.box-input {
+  position: relative;
+  margin: 55px;
+}
+.box-input-rch {
+  position: relative;
+  margin: 55px 55px 35px;
+}
+.box-input-checkbox {
+  position: relative;
+  margin: 20px 55px;
+}
+.form-label {
+  background: none;
+  color: var(--colorB);
+  font-size: 18px;
+  padding: 8px 10px 8px 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid var(--colorA);
+}
+.form-label:focus {
+  outline: none;
+  color: var(--colorB);
+}
+.namebox {
+  color: var(--colorC);
+  font-family: var(--font);
+  position: absolute;
+  left: 10px;
+  top: -14px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.form-checkbox {
+  width: 15px;
+  height: 15px;
+  border-color: var(--colorC);
+}
+.namecheckbox {
+  color: var(--colorC);
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 600;
+}
+.line {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.btn-form {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: var(--font);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #FAFAFA;
+  background-color: rgba(250, 151, 30, 0.75);
+}
+.btn-form:hover {
+  color: #FAFAFA;
+  background-color: rgba(250, 151, 30, 0.85);
+}
+.btn {
+  border-radius: 0;
+}
+.consulta {
+  margin-top: 25px;
+  text-align: center;
+}
+.consulta > a {
+  font-family: var(--font);
+  color: var(--colorA);
+}
+.error > *{
+  margin-top: 38px;
+  text-align: center;
+}

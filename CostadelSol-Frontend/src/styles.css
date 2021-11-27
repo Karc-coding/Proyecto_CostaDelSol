@@ -2,10 +2,26 @@ html {
     position: relative;
     min-height: 100%;
 }
+
+body {
+    background-color: rgba(3, 120, 166, 0.95);
+}
+
+:root {
+    --font: 'Montserrat', sans-serif;
+    --colorA: #FA971E;
+    --colorB: #5e5d5d;
+    --colorC: #00010D;
+}
+
+/* html {
+    position: relative;
+    min-height: 100%;
+}
 body {
     margin-bottom: 60px;
 }
 
 .back {
     background-color: rgba(242, 242, 242, 100%);
-}
+} */

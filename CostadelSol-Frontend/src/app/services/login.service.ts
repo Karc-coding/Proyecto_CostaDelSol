@@ -1,28 +1,26 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Habitacion } from '../models/habitacion.model';
 
-const baseUrl = "http://localhost:8090/habitacion"
+const baseUrl = "http://localhost:8090/"
 
 @Injectable({
   providedIn: 'root'
 })
-export class HabitacionService {
+export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  register(data: Habitacion): Observable<any> {
-    let username = "karc";
-    let password = "admin123";
+
+  public login(username: string, password: string) {
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ":" + password) })
-    return this.http.post(baseUrl + "/create", data, { headers })
+    return this.http.get(baseUrl, { headers, responseType: 'text' as 'json' })
   }
 
-  listAll(): Observable<any> {
+  public getUsers() {
     let username = "karc";
     let password = "admin123";
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ":" + password) })
-    return this.http.get<Habitacion[]>(baseUrl + "/listAll", { headers })
+    return this.http.get(baseUrl + "getUsers", { headers })
   }
+
 }
