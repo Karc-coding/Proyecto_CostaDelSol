@@ -14,11 +14,11 @@ export class AddFacturaComponent implements OnInit {
   habitaciones:string[] = [];
 
  factura:Factura = {
-    numFactura:"",
-    ruc:"",		
-    dni:"",
-    habitacion:"",
-    empleadoId:"",
+    numFactura:'',
+    ruc:'',		
+    dni:'',
+    habitacionId:'',
+    empleadoId:'',
     precioNoche:0
 	
   };
@@ -36,7 +36,7 @@ export class AddFacturaComponent implements OnInit {
     console.log("-------factdni"+this.factura.dni);
     console.log("-------factEmpleado"+this.factura.empleadoId);
     
-    console.log("-------facthabitacion"+this.factura.habitacion);
+    console.log("-------facthabitacion "+this.factura.habitacionId);
     console.log("-------factPrecio"+this.factura.precioNoche);
     console.log("-------factRuc"+this.factura.ruc);
     this.facturaService.registrarFactura(this.factura).subscribe(
@@ -44,11 +44,17 @@ export class AddFacturaComponent implements OnInit {
       response => {
         console.log(response.mensaje);
         alert(response.mensaje);
-
-        this.factura = {
-          
+        this.factura= {
+          numFactura:'',
+          ruc:'',		
+          dni:'',
+          habitacionId:'',
+          empleadoId:'',
+          precioNoche:0
+        
         }
-
+      
+        
       },
       error => {
         console.log(error);

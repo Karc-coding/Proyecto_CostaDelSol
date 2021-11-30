@@ -13,7 +13,11 @@ export class FacturaService {
   constructor(private http:HttpClient) { }
 
   registrarFactura(data:Factura): Observable<any>{
-    return this.http.post(baseUrl, data);
+    return this.http.post(baseUrl+ "/agregarFactura",data);
+  }
+
+  listaFactura(): Observable<Factura[]>{
+    return this.http.get<Factura[]>(baseUrl+"/listaFactura");    
   }
 
 }

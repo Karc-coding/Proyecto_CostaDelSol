@@ -1,1 +1,28 @@
-<p>list-factura works!</p>
+<div class="row" style="margin-top: 3%">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Num.Factura</th>
+                <th>RUC</th>
+                <th>DNI</th>
+                <th>Cod.Habitacion</th>
+                <th>Cod.Empleado</th>
+                <th>Prec.Noche</th>
+                <th>Fch.Salida</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let aux of arrayFactura">
+                <td>{{aux.numFactura}}</td>
+                <td>{{aux.ruc}}</td>
+                <td>{{aux.dni}}</td>
+                <td>{{aux.habitacionId}}</td>
+                <td>{{aux.empleadoId}}</td>
+                <td>{{aux.precioNoche}}</td>
+                <td>{{aux.fec_Act | date: 'dd/MM/yyyy'}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+   

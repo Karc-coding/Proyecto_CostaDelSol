@@ -5,9 +5,9 @@ export class Factura {
     numFactura?:String;		
 	ruc?:String;		
 	dni?:String;		
-	habitacion?:string;		
+	habitacionId?:string;		
 	empleadoId?:string;		
     precioNoche?:any;		
-	//fechaActual?:Date
+	fec_Act?:Date
 
 }
