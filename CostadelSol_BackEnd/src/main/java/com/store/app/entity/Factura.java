@@ -27,7 +27,7 @@ public class Factura {
 	@Column(name = "DNI")
 	private String dni;
 	
-	@JoinColumn(name = "Habitacion_ID")
+	//@JoinColumn(name = "Habitacion_ID")
 	@Column(name = "Habitacion_ID")
 	private String habitacionId;
 	

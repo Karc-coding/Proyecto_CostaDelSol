@@ -4,11 +4,13 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +23,7 @@ import com.store.app.util.Constantes;
 
 @RestController
 @RequestMapping("rest/factura")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class FacturaController {
 
 	@Autowired
@@ -30,28 +32,24 @@ public class FacturaController {
 	/*@Autowired
 	private ReservaService reservaService;*/
 	
+	@GetMapping("/listaFactura")
+	@ResponseBody
+	public ResponseEntity<List<Factura>> listaProveedor() {
+		List<Factura> lista = facturaService.listarFactura();
+		return ResponseEntity.ok(lista);
+	}
+	
 	@PostMapping("/agregarFactura")
 	@ResponseBody
 	public ResponseEntity<Map<String, Object>> insertaFactura(@RequestBody Factura factura){
 		
 		Map<String, Object> salida = new HashMap<String, Object>();
 		
-		try {
-				
-			//NUMERO FACTURA
-			/*List<String> arreglo = facturaService.listaIdFactura();			
-			String numFact = arreglo.get(0);
-			int numero = Integer.parseInt(numFact.substring(1, 3));
-			factura.setNumFactura("FAC"+numero+1);*/
+		try {				
 			
 			//INSERTAR FECHA ACTUAL
 			LocalDateTime ldt = LocalDateTime.now();
 			factura.setFec_Act(Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant()));
-			
-			
-			//OBTENER CODIGO DE ID_EMPLEADO
-			/*String idEmpleado = reservaService.buscarIdEmpleado(factura.getDni(), Date.from(ldt.atZone(ZoneId.systemDefault()).toInstant()));
-			factura.setEmpleadoId(idEmpleado);	*/		
 			
 			Factura objFac = facturaService.insertaFactura(factura);
 			
