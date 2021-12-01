@@ -1,0 +1,12 @@
+th {
+    text-align: center;
+}
+
+.div-center{
+    display: table;
+}
+
+.text-center{
+    display: table-cell;
+    vertical-align: middle;
+}
