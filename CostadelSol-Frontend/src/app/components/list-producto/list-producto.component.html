@@ -1,1 +1,56 @@
-<p>list-producto works!</p>
+<div>
+    <form class="content">
+        <div class="submit-form">
+            <div class="row">
+                <div class="col-lg-12" style="margin-top: 1.5%">
+                    <h3>Consulta de Productos</h3>
+                </div>
+            </div>
+
+            <div class="row div-center" style="margin-top: 3%">
+                <label for="descripcion" class="col-lg-1 text-center">Descripcion</label>
+                <div class="col-lg-3 text-center">
+                    <input type="text" class="form-control" name="descripcion" id="descripcion"
+                        [(ngModel)]="description" />
+                </div>
+                <label for="idcat" class="col-lg-1 text-center">Categoria</label>
+                <div class="col-lg-3 text-center">
+                    <select id="idcat" name="idcat" class="form-control" [(ngModel)]="idcat">
+                        <option value=""> [Seleccione] </option>
+                        <option value="H"> Habitacion </option>
+                        <option value="C"> Cocina </option>
+                    </select>
+                </div>
+                <div class="col-lg-2">
+                    <button class="btn btn-success" (click)="filtro()">Enviar</button>
+                </div>
+            </div>
+
+            <div>
+                <div class="row" style="margin-top: 3%">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Descripcion</th>
+                                <th>Stock</th>
+                                <th>Precio</th>
+                                <th>Categoria</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let aux of productos">
+                                <td style="text-align: center;">{{aux.id}}</td>
+                                <td>{{aux.description}}</td>
+                                <td style="text-align: center;">{{aux.stock}}</td>
+                                <td style="text-align: center;">{{aux.price}}</td>
+                                <td style="text-align: center;">{{ getCategoria(aux.idcat == null ? "0" : aux.idcat) }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
