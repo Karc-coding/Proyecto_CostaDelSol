@@ -19,7 +19,7 @@ export class AddHabitacionComponent implements OnInit {
   habitaciones: Habitacion[] = [];
 
   constructor(private habitacionService: HabitacionService) {
-    this.habitacionService.listAll().subscribe(
+    habitacionService.listAll().subscribe(
       response => {
         this.habitaciones = response.list
       },
@@ -30,9 +30,9 @@ export class AddHabitacionComponent implements OnInit {
   }
 
 
-
   ngOnInit(): void {
   }
+
 
   register() {
     this.habitacionService.register(this.habitacion).subscribe(

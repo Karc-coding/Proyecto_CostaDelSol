@@ -9,22 +9,36 @@ import { FacturaService } from 'src/app/services/factura.service';
 })
 export class ListFacturaComponent implements OnInit {
 
-  facturas:Factura[] = [];
-  arrayFactura:Factura[] = [];
+  ruc: string = "";
+  dni: string = "";
+  habitacion: string = "";
 
-  constructor(private facturaService:FacturaService) {
-    this.facturaService.listaFactura().subscribe(
-      response =>  this.arrayFactura = response
-    );
-   }
+  facturas: Factura[] = [];
 
-   lista(){
-    this.facturaService.listaFactura().subscribe(
-      response =>  this.facturas = response
+  constructor(private facturaService: FacturaService) {
+    facturaService.listaFactura().subscribe(
+      response => {
+        this.facturas = response
+      },
+      error => {
+        console.log(error);
+      }
     );
   }
 
   ngOnInit(): void {
+  }
+
+  filtro() {
+    this.facturaService.listForRucOrDniOrHabitacionId(this.ruc, this.dni, this.habitacion).subscribe(
+      response => {
+        this.facturas = response.list
+        alert(response.message);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 }

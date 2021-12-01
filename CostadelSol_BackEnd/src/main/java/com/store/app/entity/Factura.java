@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,17 +24,18 @@ public class Factura {
 	
 	@Column(name = "RUC")
 	private String ruc;
+
+	@ManyToOne
+	@JoinColumn(name = "DNI")
+	private Huesped dni;
 	
-	@Column(name = "DNI")
-	private String dni;
-	
-	//@JoinColumn(name = "Habitacion_ID")
-	@Column(name = "Habitacion_ID")
-	private String habitacionId;
-	
+	@ManyToOne
+	@JoinColumn(name = "Habitacion_ID")
+	private Habitacion habitacionId;
+
+	@ManyToOne
 	@JoinColumn(name = "Empleado_ID")
-	@Column(name = "Empleado_ID")
-	private String empleadoId;
+	private Empleado empleadoId;
 	
 	@Column(name = "Pre_Noche")
 	private Double precioNoche;

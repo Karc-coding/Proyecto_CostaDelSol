@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Empleado } from 'src/app/models/empleado.model';
 import { Factura } from 'src/app/models/factura.model';
 import { Habitacion } from 'src/app/models/habitacion.model';
+import { Huesped } from 'src/app/models/huesped.model';
+import { EmpleadoService } from 'src/app/services/empleado.service';
 import { FacturaService } from 'src/app/services/factura.service';
 import { HabitacionService } from 'src/app/services/habitacion.service';
+import { HuespedService } from 'src/app/services/huesped.service';
 
 @Component({
   selector: 'app-add-factura',
@@ -11,58 +15,97 @@ import { HabitacionService } from 'src/app/services/habitacion.service';
 })
 export class AddFacturaComponent implements OnInit {
 
-  habitaciones:string[] = [];
-
- factura:Factura = {
-    numFactura:'',
-    ruc:'',		
-    dni:'',
-    habitacionId:'',
-    empleadoId:'',
-    precioNoche:0
-	
+  factura: Factura = {
+    numFactura: '',
+    ruc: '',
+    dni: {
+      dni: '',
+    },
+    habitacionId:{
+      id: '',
+    },
+    empleadoId:{
+      id: '',
+    },
+    precioNoche: 0
   };
 
-  constructor(private facturaService:FacturaService, private habitacionService:HabitacionService) { 
+  huespedes: Huesped[] = [];
+  habitaciones: Habitacion[] = [];
+  empleados: Empleado[] = [];
 
-    this.habitacionService.listDescripHabitacion().subscribe(
-      (response) => this.habitaciones = response
-    );
+  facturas: Factura[] = [];
 
-  }
-
-  registrar(){
-    console.log("-------fact"+this.factura.numFactura);
-    console.log("-------factdni"+this.factura.dni);
-    console.log("-------factEmpleado"+this.factura.empleadoId);
-    
-    console.log("-------facthabitacion "+this.factura.habitacionId);
-    console.log("-------factPrecio"+this.factura.precioNoche);
-    console.log("-------factRuc"+this.factura.ruc);
-    this.facturaService.registrarFactura(this.factura).subscribe(
-      
+  constructor(private facturaService: FacturaService, private habitacionService: HabitacionService, private empleadoService: EmpleadoService, huespedService: HuespedService) {
+    facturaService.listaFactura().subscribe(
       response => {
-        console.log(response.mensaje);
-        alert(response.mensaje);
-        this.factura= {
-          numFactura:'',
-          ruc:'',		
-          dni:'',
-          habitacionId:'',
-          empleadoId:'',
-          precioNoche:0
-        
-        }
-      
-        
+        this.facturas = response
       },
       error => {
         console.log(error);
+      }
+    );
+    
+    habitacionService.listAll().subscribe(
+      response => {
+        this.habitaciones = response.list
       },
+      error => {
+        console.log(error);
+      }
+    );
+    empleadoService.listAll().subscribe(
+      response => {
+        this.empleados = response.list
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    huespedService.listAll().subscribe(
+      response => {
+        this.huespedes = response.list
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
 
-      /*response => {alert(response.mensaje);},
-      error => {console.log(error);}*/
+  registrar() {
+    this.facturaService.registrarFactura(this.factura).subscribe(
 
+      response => {
+        alert(response.mensaje);
+
+        this.facturaService.listaFactura().subscribe(
+          response => {
+            this.facturas = response
+          },
+          error => {
+            console.log(error);
+          }
+        );
+
+        this.factura = {
+          numFactura: '',
+          ruc: '',
+          dni: {
+            dni: '',
+          },
+          habitacionId:{
+            id: '',
+          },
+          empleadoId:{
+            id: '',
+          },
+          precioNoche: 0
+        };
+
+      },
+      error => {
+        console.log(error);
+      }
     );
 
   }
