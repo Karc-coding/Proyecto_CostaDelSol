@@ -19,7 +19,28 @@ export class AddProductoComponent implements OnInit {
 
   productos: Producto[] = [];
 
-  constructor() { }
+  constructor(private productoService: ProductoService) {
+    productoService.listAll().subscribe(
+      response => {
+        this.productos = response.list
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  getCategoria(categoria: string): string {
+    var result = "";
+    if (categoria == "H") {
+      result = "Habitacion"
+    } else if(categoria == "C") {
+      result = "Cocina"
+    } else {
+      result = "NULL"
+    }
+    return result == null ? "" : result;
+  }
 
   ngOnInit(): void {
   }
@@ -28,6 +49,15 @@ export class AddProductoComponent implements OnInit {
     this.productoService.register(this.producto).subscribe(
       response => {
         alert(response.message);
+
+        this.productoService.listAll().subscribe(
+          response => {
+            this.productos = response.list
+          },
+          error => {
+            console.log(error);
+          }
+        );
 
         this.producto = {
           id: '',
