@@ -13,16 +13,25 @@ export class LoginComponent implements OnInit {
   username: string = "";
   password: string = "";
 
-  constructor(private loginService: LoginService) {
-  }
+  messageError?: string;
+
+  constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   login() {
-    console.log(this.username);
-    console.log(this.password);
-    this.loginService.login(this.username, this.password);
+    this.loginService.login(this.username, this.password).subscribe(
+      (resp: any) => {
+        this.router.navigateByUrl("/home");
+        localStorage.setItem('auth_token', resp.token);
+        console.log(resp);
+      },
+      error => {
+        console.log(error);
+        this.messageError = "Invalid username or password";
+      }
+    );
   }
 
 }

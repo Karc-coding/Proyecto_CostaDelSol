@@ -1,72 +1,102 @@
 <div>
     <form class="content" (submit)="registrar()">
-        <div class="submit-form" >  
-
+        <div class="submit-form">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12" style="margin-top: 1.5%">
                     <h3>Registro de Factura </h3>
-                </div>
-            </div>  
-
-            <div class="row" style="margin-top: 3%">
-
-                <div class="col-lg-3">
-                    <label for="numFactura">Número Factura</label>
-                    <input type="text" class="form-control" name="numFactura" id="numFactura" maxlength="6" [(ngModel)] = "factura.numFactura" />
-                </div>
-
-                <div class="col-lg-3">
-                    <label for="ruc">RUC</label>
-                    <input type="text" class="form-control" name="ruc" id="ruc" maxlength="11" [(ngModel)] = "factura.ruc"/>
-                </div>              
-                
-                <div class="col-lg-3">
-                    <label for="empleadoId">Empleado</label>
-                    <input type="text" class="form-control" name="empleadoId" id="empleadoId" [(ngModel)] = "factura.empleadoId"/>
-                </div> 
-                                
-            </div>  
-
-            <div class="row" style="margin-top: 3%">
-                <div class="col-lg-3">
-                    <label for="dni">DNI</label>
-                    <input type="text" class="form-control" name="dni" id="dni" maxlength="8" [(ngModel)] = "factura.dni" />
-                </div>
-
-                <div class="col-lg-3">
-                    <label for="precioNoche">Precio</label>
-                    <input type="number"  class="form-control" id="precioNoche"  name="precioNoche" [(ngModel)] = "factura.precioNoche"/>
-                </div>                
-         
-                <div class="col-lg-3">
-                    <label for="habitacionId">Habitación</label>
-                    <select id="habitacionId" name="habitacionId" class="form-control" [(ngModel)] = "factura.habitacionId">
-                        <option value="-1"> [Seleccione] </option>   
-                        <option value="H201"> Doble Estandar </option>   
-                        <option value="H205"> Doble Premium </option>   
-                        <option value="H203"> Doble Superior </option>   
-                        <option value="H102"> Matrimonial Estandar </option>   
-                        <option value="H106"> Matrimonial premium </option>   
-                        <option value="H104"> Matrimonial Superior </option>   
-                        <option value="H107"> Suit </option>   
-                    </select>
-                </div>
-               <!-- <div class="col-lg-3">
-                    <label for="description">Habitación</label>
-                    <select id="description" name="description" class="form-control" [(ngModel)] = "factura.habitacion!.description">
-                        <option value="-1"> [Seleccione] </option>   
-                        <option *ngFor="let aux of habitaciones" value="{{aux}}"> {{aux}} </option>   
-                    </select>
-                </div>
-            -->
-            </div>    
-
-            <div class="row" style="margin-top: 3%"> 
-                <div class="col-lg-12">
-                    <button class="btn btn-success">Enviar</button>
                 </div>
             </div>
 
-        </div>  
+
+            <div class="p-3">
+                <div class="row" style="margin-top: 3%">
+                    <div class="col-lg-3">
+                        <label for="numFactura">Número Factura</label>
+                        <input type="text" class="form-control" name="numFactura" id="numFactura" maxlength="6"
+                            [(ngModel)]="factura.numFactura" />
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="ruc">RUC</label>
+                        <input type="text" class="form-control" name="ruc" id="ruc" maxlength="11"
+                            [(ngModel)]="factura.ruc" />
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="dni">Huesped</label>
+                        <div>
+                            <select id="dni" name="dni" class="form-control" [(ngModel)]="factura.dni!.dni">
+                                <option value="-1"> [Seleccione] </option>
+                                <option *ngFor="let aux of huespedes" value="{{aux.dni}}">
+                                    {{aux.nombre}} {{aux.apellido}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="precioNoche">Precio</label>
+                        <input type="number" class="form-control" id="precioNoche" name="precioNoche"
+                            [(ngModel)]="factura.precioNoche" />
+                    </div>
+                </div>
+
+                <div class="row div-center" style="margin-top: 3%">
+                    <label for="habitacionId" class="col-lg-1 text-center">Habitación</label>
+                    <div class="col-lg-4 text-center">
+                        <select id="habitacionId" name="habitacionId" class="form-control"
+                            [(ngModel)]="factura.habitacionId!.id">
+                            <option value="-1"> [Seleccione] </option>
+                            <option *ngFor="let aux of habitaciones" value="{{aux.id}}">
+                                {{aux.description}}
+                            </option>
+                        </select>
+                    </div>
+                    <label for="empleadoId" class="col-lg-1 text-center">Empleado</label>
+                    <div class="col-lg-4 text-center">
+                        <select id="empleadoId" name="empleadoId" class="form-control"
+                            [(ngModel)]="factura.empleadoId!.id">
+                            <option value="-1"> [Seleccione] </option>
+                            <option *ngFor="let aux of empleados" value="{{aux.id}}">
+                                {{aux.nombre}} {{aux.apellido}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-lg-2">
+                        <button class="btn btn-success">Enviar</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div>
+                <div class="row" style="margin-top: 3%">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nro Factura</th>
+                                <th>RUC</th>
+                                <th>DNI</th>
+                                <th>Nombre</th>
+                                <th>Habitacion</th>
+                                <th>Empleado</th>
+                                <th>Precio</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let aux of facturas">
+                                <td>{{aux.numFactura}}</td>
+                                <td>{{aux.ruc}}</td>
+                                <td>{{aux.dni!.dni}}</td>
+                                <td>{{aux.dni!.nombre}} {{aux.dni!.apellido}}</td>
+                                <td>{{aux.habitacionId!.description}}</td>
+                                <td>{{aux.empleadoId!.nombre}} {{aux.empleadoId!.apellido}}</td>
+                                <td>{{aux.precioNoche}}</td>
+                                <td>{{aux.fec_Act | date: 'dd/MM/yyyy'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
     </form>
 </div>

@@ -1,28 +1,61 @@
-<div class="row" style="margin-top: 3%">
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Num.Factura</th>
-                <th>RUC</th>
-                <th>DNI</th>
-                <th>Cod.Habitacion</th>
-                <th>Cod.Empleado</th>
-                <th>Prec.Noche</th>
-                <th>Fch.Salida</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let aux of arrayFactura">
-                <td>{{aux.numFactura}}</td>
-                <td>{{aux.ruc}}</td>
-                <td>{{aux.dni}}</td>
-                <td>{{aux.habitacionId}}</td>
-                <td>{{aux.empleadoId}}</td>
-                <td>{{aux.precioNoche}}</td>
-                <td>{{aux.fec_Act | date: 'dd/MM/yyyy'}}
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<div>
+    <form class="content">
+        <div class="submit-form">
+            <div class="row">
+                <div class="col-lg-12" style="margin-top: 1.5%">
+                    <h3>Consulta de Facturas</h3>
+                </div>
+            </div>
+
+            <div class="row div-center" style="margin-top: 3%">
+                <label for="ruc" class="col-lg-1 text-center">RUC</label>
+                <div class="col-lg-2 text-center">
+                    <input type="text" maxlength="11" class="form-control" name="ruc" id="ruc" [(ngModel)]="ruc" />
+                </div>
+                <label for="dni" class="col-lg-1 text-center">DNI</label>
+                <div class="col-lg-2 text-center">
+                    <input type="text" maxlength="8" class="form-control" name="dni" id="dni" [(ngModel)]="dni" />
+                </div>
+                <label for="habitacion" class="col-lg-1 text-center">Habitacion</label>
+                <div class="col-lg-3 text-center">
+                    <input type="text" class="form-control" name="habitacion" id="habitacion"
+                        [(ngModel)]="habitacion" />
+                </div>
+                <div class="col-lg-1">
+                    <button class="btn btn-success" (click)="filtro()">Enviar</button>
+                </div>
+            </div>
+
+            <div>
+                <div class="row" style="margin-top: 3%">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nro Factura</th>
+                                <th>RUC</th>
+                                <th>DNI</th>
+                                <th>Nombre</th>
+                                <th>Habitacion</th>
+                                <th>Empleado</th>
+                                <th>Precio</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let aux of facturas">
+                                <td>{{aux.numFactura}}</td>
+                                <td>{{aux.ruc}}</td>
+                                <td>{{aux.dni!.dni}}</td>
+                                <td>{{aux.dni!.nombre}} {{aux.dni!.apellido}}</td>
+                                <td>{{aux.habitacionId!.description}}</td>
+                                <td>{{aux.empleadoId!.nombre}} {{aux.empleadoId!.apellido}}</td>
+                                <td>{{aux.precioNoche}}</td>
+                                <td>{{aux.fec_Act | date: 'dd/MM/yyyy'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
-   

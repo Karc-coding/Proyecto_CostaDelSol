@@ -24,9 +24,16 @@ public class FacturaServiceImp implements FacturaService {
 		return repository.findAll();
 	}
 
+
 	/*@Override
 	public List<String> listaIdFactura() {		
 		return repository.listaIdFactura();
 	}*/
+	
 
+	@Override
+	public List<Factura> findAllByRucOrDniOrHabitacion(String ruc, String dni, String habitacion) {
+		return repository.findFacturaByRucOrDniOrHabitacion(ruc, dni, habitacion);
+	}
+	
 }

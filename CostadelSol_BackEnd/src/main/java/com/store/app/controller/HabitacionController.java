@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,7 +25,7 @@ import com.store.app.util.Constantes;
 
 @RestController
 @RequestMapping("/habitacion")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class HabitacionController {
 
 	@Autowired
@@ -37,12 +38,12 @@ public class HabitacionController {
 		Map<String, Object> salida = new HashMap<>();
 
 		try {
-			List<Habitacion> list = habitacionService.findAll();
+			List<Habitacion> list = habitacionService.listAll();
 			if (CollectionUtils.isEmpty(list)) {
 				salida.put("message", "No existen habitaciones");
 			} else {
 				salida.put("list", list);
-				salida.put("message", "Se hallo " + list.size() + " habitaciones");
+				salida.put("message", "Se hallo " + list.size() + " habitacion(es)");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -62,7 +63,29 @@ public class HabitacionController {
 				salida.put("message", "No existen habitaciones disponibles");
 			} else {
 				salida.put("list", list);
-				salida.put("message", "Se hallo " + list.size() + " habitaciones disponibles");
+				salida.put("message", "Se hallo " + list.size() + " habitacion(es) disponible(s)");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return ResponseEntity.ok(salida);
+	}
+
+	@GetMapping("/listHabitacionForDescriptionOrState")
+	@ResponseBody
+	public ResponseEntity<Map<String, Object>> listHabitacionDescriptionOrState(
+			@RequestParam(name = "description", defaultValue = "", required = false) String description,
+			@RequestParam(name = "state", defaultValue = "", required = false) String state) {
+		
+		Map<String, Object> salida = new HashMap<>();
+		
+		try {
+			List<Habitacion> list = habitacionService.findAllByStateOrDescription("%" + state + "%", "%" + description + "%");
+			if (CollectionUtils.isEmpty(list)) {
+				salida.put("message", "No existen habitaciones en la consulta");
+			} else {
+				salida.put("list", list);
+				salida.put("message", "Se hallo " + list.size() + " habitacion(es)");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -75,7 +98,7 @@ public class HabitacionController {
 	public ResponseEntity<Map<String, Object>> getHabitacion(@PathVariable("id") String id) {
 
 		Map<String, Object> salida = new HashMap<>();
-		
+
 		try {
 			Habitacion hab = habitacionService.getHabitacion(id);
 			if (hab == null) {
@@ -95,7 +118,7 @@ public class HabitacionController {
 	public ResponseEntity<Map<String, Object>> createHabitacion(@RequestBody Habitacion hab) {
 
 		Map<String, Object> salida = new HashMap<>();
-		
+
 		try {
 			Habitacion objHab = habitacionService.createHabitacion(hab);
 			if (objHab == null) {
@@ -116,7 +139,7 @@ public class HabitacionController {
 	public ResponseEntity<Map<String, Object>> updateHabitacion(@RequestBody Habitacion hab) {
 
 		Map<String, Object> salida = new HashMap<>();
-		
+
 		try {
 			Habitacion objHab = habitacionService.updateHabitacion(hab);
 			if (objHab == null) {
@@ -137,7 +160,7 @@ public class HabitacionController {
 	public ResponseEntity<Map<String, Object>> deleteHabitacion(@PathVariable("id") String id) {
 
 		Map<String, Object> salida = new HashMap<>();
-		
+
 		try {
 			Habitacion objHab = habitacionService.deleteHabitacion(id);
 			if (objHab == null) {
