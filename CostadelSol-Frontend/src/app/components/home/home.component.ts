@@ -8,9 +8,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class HomeComponent implements OnInit {
 
-  users: any;
-
-  constructor(private loginService: LoginService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

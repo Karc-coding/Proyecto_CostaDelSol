@@ -15,7 +15,7 @@ public class HabitacionServiceImpl implements HabitacionService {
 	public HabitacionRepository repo;
 	
 	@Override
-	public List<Habitacion> findAll() {
+	public List<Habitacion> listAll() {
 		return repo.findAll();
 	}
 
@@ -47,6 +47,11 @@ public class HabitacionServiceImpl implements HabitacionService {
 	@Override
 	public List<Habitacion> findAllByStateDisponible() {
 		return repo.findHabitacionByStateDisponible();
+	}
+
+	@Override
+	public List<Habitacion> findAllByStateOrDescription(String state, String description) {
+		return repo.findHabitacionByStateOrDescription(state, description);
 	}
 
 }

@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Habitacion } from '../models/habitacion.model';
@@ -19,7 +19,15 @@ export class HabitacionService {
   listAll(): Observable<any> {
     return this.http.get<Habitacion[]>(baseUrl + "/listAll")
   }
-  listDescripHabitacion(): Observable<string[]>{
-    return this.http.get<string[]>(baseUrl+ "/listaDescripcionHabitacion");
+
+  listForDescriptionOrState(description: string, state: string): Observable<any> {
+    const params = new HttpParams()
+      .set("description", description)
+      .set("state", state);
+    return this.http.get<Habitacion[]>(baseUrl + "/listHabitacionForDescriptionOrState", { params })
+  }
+
+  listDescripHabitacion(): Observable<string[]> {
+    return this.http.get<string[]>(baseUrl + "/listaDescripcionHabitacion");
   }
 }

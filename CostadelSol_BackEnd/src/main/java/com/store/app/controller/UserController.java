@@ -40,10 +40,10 @@ public class UserController {
 		String token = jwtService.createToken(userDetails);
 		return new AuthenticationResponse(token);
 	}
-	
+
 	@GetMapping("/test")
-    public String getTest(){
-        return "test";
-    }
+	public String getTest() {
+		return "test";
+	}
 
 }

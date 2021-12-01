@@ -21,6 +21,9 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginService } from './services/login.service';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { ActualizeHabitacionComponent } from './components/actualize-habitacion/actualize-habitacion.component';
+import { ActualizeHuespedComponent } from './components/actualize-huesped/actualize-huesped.component';
+import { ActualizeFacturaComponent } from './components/actualize-factura/actualize-factura.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,9 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     ListHuespedComponent,
     ListFacturaComponent,
     ListProductoComponent,
+    ActualizeHabitacionComponent,
+    ActualizeHuespedComponent,
+    ActualizeFacturaComponent,
     FooterComponent,
     NavbarComponent,
     LoginComponent,
